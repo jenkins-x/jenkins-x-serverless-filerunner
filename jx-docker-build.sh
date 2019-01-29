@@ -55,6 +55,6 @@ if [ "release" == "${RELEASE}" ]; then
     jx step tag --version $TAG_NUM
 fi
 
-#if [ "release" == "${RELEASE}" ]; then
-#  updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
-#fi
+if [ "release" == "${RELEASE}" ]; then
+    updatebot push-version --kind docker ${ORG}/jenkins-filerunner ${TAG}
+fi
