@@ -24,7 +24,7 @@ jenkins:
   primaryView:
     all:
       name: "all"
-  quietPeriod: 5
+  quietPeriod: 0
   scmCheckoutRetryCount: 0
   slaveAgentPort: 50000
   views:
