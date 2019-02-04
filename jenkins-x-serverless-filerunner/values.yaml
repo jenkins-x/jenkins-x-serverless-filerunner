@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 serverlessfilerunner:
   image:
-    repository: jenkinsxio/jenkins-base
+    repository: jenkinsxio/jenkins-filerunner
     tag: 0.1.92
   imagePullPolicy: Always
   terminationGracePeriodSeconds: 30
