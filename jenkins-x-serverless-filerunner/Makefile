@@ -1,5 +1,5 @@
 CHART_REPO := http://jenkins-x-chartmuseum:8080
-NAME := serverless-filerunner
+NAME := serverlessfilerunner
 OS := $(shell uname)
 VERSION := $(shell cat ./VERSION)
 

@@ -1,7 +1,7 @@
 # Default values for serverless
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-serverless:
+serverlessfilerunner:
   image:
     repository: jenkinsxio/jenkins-base
     tag: 0.1.92

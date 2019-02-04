@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "serverless-filerunner.name" . }}-cm
+  name: {{ template "serverlessfilerunner.name" . }}-cm
 data:
   Jenkinsfile: |-
     pipeline {

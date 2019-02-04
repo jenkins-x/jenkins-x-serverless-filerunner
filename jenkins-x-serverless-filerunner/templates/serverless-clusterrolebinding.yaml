@@ -1,12 +1,12 @@
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ template "serverless-filerunner.name" . }}
+  name: {{ template "serverlessfilerunner.name" . }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ template "serverless-filerunner.name" . }}
+  name: {{ template "serverlessfilerunner.name" . }}
 subjects:
 - kind: ServiceAccount
-  name: {{ template "serverless-filerunner.name" . }}
+  name: {{ template "serverlessfilerunner.name" . }}
   namespace: {{ .Release.Namespace }}

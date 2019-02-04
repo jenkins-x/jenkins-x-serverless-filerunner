@@ -1,42 +1,42 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ template "serverless-filerunner.name" . }}
+  name: {{ template "serverlessfilerunner.name" . }}
   labels:
-    app: {{ template "serverless-filerunner.name" . }}
+    app: {{ template "serverlessfilerunner.name" . }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: {{ template "serverless-filerunner.name" . }}
+        app: {{ template "serverlessfilerunner.name" . }}
     spec:
-      serviceAccountName: {{ template "serverless-filerunner.name" . }}
-      terminationGracePeriodSeconds: {{ .Values.serverless-filerunner.terminationGracePeriodSeconds }}
+      serviceAccountName: {{ template "serverlessfilerunner.name" . }}
+      terminationGracePeriodSeconds: {{ .Values.serverlessfilerunner.terminationGracePeriodSeconds }}
       restartPolicy: Never
       containers:
-      - name: {{ template "serverless-filerunner.name" . }}
-        image: {{ .Values.serverless-filerunner.image.repository }}:{{ .Values.serverless-filerunner.image.tag }}
-        imagePullPolicy: {{ .Values.serverless-filerunner.imagePullPolicy }}
+      - name: {{ template "serverlessfilerunner.name" . }}
+        image: {{ .Values.serverlessfilerunner.image.repository }}:{{ .Values.serverlessfilerunner.image.tag }}
+        imagePullPolicy: {{ .Values.serverlessfilerunner.imagePullPolicy }}
         env:
         - name: BUILD_NUMBER
           value: "1"
         volumeMounts:
-        - name: {{ template "serverless-filerunner.name" . }}-volume
+        - name: {{ template "serverlessfilerunner.name" . }}-volume
           mountPath: /workspace/
-    {{- with .Values.serverless-filerunner.nodeSelector }}
+    {{- with .Values.serverlessfilerunner.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
     {{- end }}
-    {{- with .Values.serverless-filerunner.affinity }}
+    {{- with .Values.serverlessfilerunner.affinity }}
       affinity:
 {{ toYaml . | indent 8 }}
     {{- end }}
-    {{- with .Values.serverless-filerunner.tolerations }}
+    {{- with .Values.serverlessfilerunner.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
       volumes:
-      - name: {{ template "serverless-filerunner.name" . }}-volume
+      - name: {{ template "serverlessfilerunner.name" . }}-volume
         configMap:
-          name: {{ template "serverless-filerunner.name" . }}-cm
+          name: {{ template "serverlessfilerunner.name" . }}-cm
