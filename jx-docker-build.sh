@@ -48,7 +48,7 @@ export TAG
 
 echo "Building ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
 head -n 1 Dockerfile
-skaffold build -f skaffold.yaml
+retry 3 skaffold build -f skaffold.yaml
 echo "Built ${DOCKER_REGISTRY}/${ORG}/jenkins-filerunner:${TAG}"
 
 if [ "release" == "${RELEASE}" ]; then

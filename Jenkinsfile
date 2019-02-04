@@ -22,6 +22,17 @@ pipeline {
           sh 'export VERSION=$PREVIEW_VERSION'
           sh "make build"
           sh './jx-docker-build.sh $PREVIEW_VERSION $DOCKER_ORG pr'
+
+          sh "gcloud auth activate-service-account --key-file $GKE_SA"
+          sh "gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev"
+
+          dir('jenkins-x-serverless-filerunner') {
+            sh 'sed -i.bak -e "s/tag: .*/tag: ${PREVIEW_VERSION}/" values.yaml'
+            sh 'rm values.yaml.bak'
+            sh 'cat values.yaml'
+          }
+
+          sh 'jx/scripts/test.sh'
         }
       }
       stage('Build Release') {
