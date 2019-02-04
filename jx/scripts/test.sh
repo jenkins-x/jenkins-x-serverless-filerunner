@@ -20,7 +20,7 @@ pushd jenkins-x-serverless-filerunner
     jx ns $PREVIEW_NAMESPACE
 
     helm3 upgrade \
-        --set serverless-filerunner.nameOverride=$HELM_RELEASE \
+        --set serverlessfilerunner.nameOverride=$HELM_RELEASE \
         --install --namespace $PREVIEW_NAMESPACE \
         $HELM_RELEASE .
 
