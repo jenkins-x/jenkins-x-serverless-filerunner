@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "serverless-filerunner.name" . }}
+  labels:
+    app: {{ template "serverless-filerunner.name" . }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "serverless-filerunner.name" . }}
+    spec:
+      serviceAccountName: {{ template "serverless-filerunner.name" . }}
+      terminationGracePeriodSeconds: {{ .Values.serverless-filerunner.terminationGracePeriodSeconds }}
+      restartPolicy: Never
+      containers:
+      - name: {{ template "serverless-filerunner.name" . }}
+        image: {{ .Values.serverless-filerunner.image.repository }}:{{ .Values.serverless-filerunner.image.tag }}
+        imagePullPolicy: {{ .Values.serverless-filerunner.imagePullPolicy }}
+        env:
+        - name: BUILD_NUMBER
+          value: "1"
+        volumeMounts:
+        - name: {{ template "serverless-filerunner.name" . }}-volume
+          mountPath: /workspace/
+    {{- with .Values.serverless-filerunner.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.serverless-filerunner.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.serverless-filerunner.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+      volumes:
+      - name: {{ template "serverless-filerunner.name" . }}-volume
+        configMap:
+          name: {{ template "serverless-filerunner.name" . }}-cm
