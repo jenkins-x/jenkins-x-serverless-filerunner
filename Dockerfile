@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.150.2 as jenkins
+FROM jenkins/jenkins:2.150.3 as jenkins
 USER root
 ENV CWP_VERSION 1.0-SNAPSHOT
 ADD tmp/output/target/jenkins-x-serverless-${CWP_VERSION}.war /usr/share/jenkins/jenkins.war
