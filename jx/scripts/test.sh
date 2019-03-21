@@ -47,10 +47,10 @@ pushd jenkins-x-serverless-filerunner
         sleep ${TIME_BETWEEN_CHECKS}
     done
 
-    if [ "${SUCCESS}" == "false" ]; then
+    #if [ "${SUCCESS}" == "false" ]; then
         POD=`kubectl get pods | grep $HELM_RELEASE | awk '{print $1}'`
         kubectl logs $POD
-    fi
+    #fi
 
     # cleanup    
     helm3 del $HELM_RELEASE --purge
