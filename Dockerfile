@@ -49,7 +49,7 @@ RUN curl -f https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKE
   rm -rf docker
 
 # helm
-ENV HELM_VERSION 2.12.2
+ENV HELM_VERSION 2.13.1
 RUN curl -f https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz  | tar xzv && \
   mv linux-amd64/helm /usr/bin/ && \
   rm -rf linux-amd64
@@ -60,7 +60,7 @@ RUN curl -Lf https://github.com/jstrachan/helm/releases/download/untagged-933757
   rm helm3.tgz
 
 # gcloud
-ENV GCLOUD_VERSION 237.0.0
+ENV GCLOUD_VERSION 239.0.0
 RUN curl -Lf https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz | tar xzv && \
   mv google-cloud-sdk /usr/bin/
 ENV PATH=$PATH:/usr/bin/google-cloud-sdk/bin
@@ -81,7 +81,7 @@ RUN curl -Lf https://github.com/fabric8io/exposecontroller/releases/download/v$E
   mv exposecontroller /usr/bin/
 
 # skaffold
-ENV SKAFFOLD_VERSION 0.24.0
+ENV SKAFFOLD_VERSION 0.26.0
 RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v${SKAFFOLD_VERSION}/skaffold-linux-amd64 && \
   chmod +x skaffold && \
   mv skaffold /usr/bin
