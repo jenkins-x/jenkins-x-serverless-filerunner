@@ -14,12 +14,15 @@ echo "HELM_RELEASE=$HELM_RELEASE"
 
 pushd jenkins-x-serverless-filerunner
 
-    gcloud auth activate-service-account --key-file $GKE_SA
-    gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev
-
     sed -i.bak -e "s/tag: .*/tag: ${PREVIEW_VERSION}/" values.yaml
     rm values.yaml.bak
     cat values.yaml
+   
+	make build 
+ 
+	gcloud auth activate-service-account --key-file $GKE_SA
+    gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev
+
 
     if [[ $(kubectl get namespace ${PREVIEW_NAMESPACE} | grep -c "${PREVIEW_NAMESPACE}") -eq 1 ]]; then
         echo "$PREVIEW_NAMESPACE already exists"    
