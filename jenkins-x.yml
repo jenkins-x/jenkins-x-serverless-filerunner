@@ -18,8 +18,30 @@ pipelineConfig:
             value: jenkins-x-bot
           - name: GOOGLE_APPLICATION_CREDENTIALS
             value: /builder/home/kaniko-secret.json
+          - name: MAVEN_OPTS
+            value: "-Duser.home=/builder/home"
           steps:
-          - image: jenkinsxio/jx:1.3.963 
+
+          - image: alpine:3.8
+            name: make_directories
+            command: mkdir
+            args:
+            - -p
+            - /builder/home/.m2
+
+          - image: jenkinsxio/jx:1.3.1008
+            command: jx
+            args:
+              - step
+              - credential
+              - -s
+              - jenkins-maven-settings
+              - -k
+              - settings.xml
+              - -f
+              - /builder/home/.m2/settings.xml
+
+          - image: jenkinsxio/jx:1.3.1008 
             command: jx
             args:
               - step
@@ -74,8 +96,29 @@ pipelineConfig:
             value: /builder/home/jenkinsx-dev-07b8e95876b1.json
           - name: GOOGLE_APPLICATION_CREDENTIALS
             value: /builder/home/kaniko-secret.json
+          - name: MAVEN_OPTS
+            value: "-Duser.home=/builder/home"
           steps:
-          - image: jenkinsxio/jx:1.3.963 
+          - image: alpine:3.8
+            name: make_directories
+            command: mkdir
+            args:
+            - -p
+            - /builder/home/.m2
+
+          - image: jenkinsxio/jx:1.3.1008
+            command: jx
+            args:
+              - step
+              - credential
+              - -s
+              - jenkins-maven-settings
+              - -k
+              - settings.xml
+              - -f
+              - /builder/home/.m2/settings.xml
+
+          - image: jenkinsxio/jx:1.3.1008 
             command: jx
             args:
               - step 
@@ -110,7 +153,7 @@ pipelineConfig:
               - --cache=true
               - --cache-dir=/workspace
 
-          - image: jenkinsxio/jx:1.3.963 
+          - image: jenkinsxio/jx:1.3.1008 
             command: jx
             args:
               - step 
