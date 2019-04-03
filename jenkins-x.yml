@@ -23,7 +23,6 @@ pipelineConfig:
           steps:
 
           - image: alpine:3.8
-            name: make_directories
             command: mkdir
             args:
             - -p
@@ -71,7 +70,7 @@ pipelineConfig:
             args:
               - --dockerfile=Dockerfile
               - --destination=docker.io/jenkinsxio/jenkins-filerunner:${inputs.params.version}
-              - --context=/workspace/workspace
+              - --context=/workspace/source
               - --cache-repo=gcr.io/jenkinsxio/cache-filerunner
               - --cache=true
               - --cache-dir=/workspace
@@ -100,7 +99,6 @@ pipelineConfig:
             value: "-Duser.home=/builder/home"
           steps:
           - image: alpine:3.8
-            name: make_directories
             command: mkdir
             args:
             - -p
@@ -148,7 +146,7 @@ pipelineConfig:
             args:
               - --dockerfile=Dockerfile
               - --destination=docker.io/jenkinsxio/jenkins-filerunner:${inputs.params.version}
-              - --context=/workspace/workspace
+              - --context=/workspace/source
               - --cache-repo=gcr.io/jenkinsxio/cache-filerunner
               - --cache=true
               - --cache-dir=/workspace
