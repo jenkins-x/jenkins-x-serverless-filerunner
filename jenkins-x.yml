@@ -23,7 +23,6 @@ pipelineConfig:
           steps:
 
           - image: alpine:3.8
-            name: make_directories
             command: mkdir
             args:
             - -p
@@ -100,7 +99,6 @@ pipelineConfig:
             value: "-Duser.home=/builder/home"
           steps:
           - image: alpine:3.8
-            name: make_directories
             command: mkdir
             args:
             - -p
