@@ -21,8 +21,7 @@ pushd jenkins-x-serverless-filerunner
 	make build 
  
 	gcloud auth activate-service-account --key-file $GKE_SA
-    gcloud container clusters get-credentials anthorse --zone europe-west1-b --project jenkinsx-dev
-
+    gcloud container clusters get-credentials jx-bdd-tests --zone europe-west1-c --project jenkins-x-infra
 
     if [[ $(kubectl get namespace ${PREVIEW_NAMESPACE} | grep -c "${PREVIEW_NAMESPACE}") -eq 1 ]]; then
         echo "$PREVIEW_NAMESPACE already exists"    
