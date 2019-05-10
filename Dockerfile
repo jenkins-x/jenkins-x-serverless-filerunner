@@ -1,5 +1,6 @@
 FROM jenkins/jenkins:2.150.3 as jenkins
 USER root
+
 ENV CWP_VERSION 1.0-SNAPSHOT
 ADD tmp/output/target/jenkins-x-serverless-${CWP_VERSION}.war /usr/share/jenkins/jenkins.war
 RUN mkdir /app && unzip /usr/share/jenkins/jenkins.war -d /app/jenkins
@@ -122,6 +123,16 @@ RUN mkdir acr && \
     curl -Lf https://aadacr.blob.core.windows.net/acr-docker-credential-helper/docker-credential-acr-linux-amd64.tar.gz | tar -xzv -C ./acr/ && \
     mv acr/docker-credential-acr-linux /usr/bin/ && \
     rm -rf acr
+
+# Git
+ENV GIT_VERSION 2.21.0
+RUN apt-get update && apt install -y make libssl-dev libghc-zlib-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip wget && \
+  cd /usr/src  && \
+  wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz  && \
+  tar xzf git-${GIT_VERSION}.tar.gz  && \
+  cd git-${GIT_VERSION} && \
+  make prefix=/usr/local/git all  && \
+  make prefix=/usr/local/git install
 
 # goreleaser
 ENV GORELEASER_VERSION 0.93.2
