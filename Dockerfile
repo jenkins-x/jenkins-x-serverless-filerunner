@@ -131,8 +131,8 @@ RUN apt-get update && apt install -y make libssl-dev libghc-zlib-dev libcurl4-gn
   wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz  && \
   tar xzf git-${GIT_VERSION}.tar.gz  && \
   cd git-${GIT_VERSION} && \
-  make prefix=/usr/local/git all  && \
-  make prefix=/usr/local/git install
+  make prefix=/usr all  && \
+  make prefix=/usr install
 
 # goreleaser
 ENV GORELEASER_VERSION 0.93.2
