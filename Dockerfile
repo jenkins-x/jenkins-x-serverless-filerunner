@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.150.3 as jenkins
+FROM jenkins/jenkins:2.164.3 as jenkins
 USER root
 
 ENV CWP_VERSION 1.0-SNAPSHOT

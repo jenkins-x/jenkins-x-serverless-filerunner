@@ -57,7 +57,7 @@ pipelineConfig:
             image: gcr.io/kaniko-project/warmer
             args:
               - --cache-dir=/workspace
-              - --image=jenkins/jenkins:2.164.2
+              - --image=jenkins/jenkins:2.164.3
               - --image=openjdk:8-jdk
 
           - image: jenkinsxio/builder-maven:0.1.274
@@ -138,7 +138,7 @@ pipelineConfig:
             image: gcr.io/kaniko-project/warmer
             args:
               - --cache-dir=/workspace
-              - --image=jenkins/jenkins:2.164.2
+              - --image=jenkins/jenkins:2.164.3
               - --image=openjdk:8-jdk
 
           - image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6

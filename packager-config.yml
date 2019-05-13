@@ -17,14 +17,14 @@ buildSettings:
         git: https://github.com/jenkinsci/jenkinsfile-runner.git
         commit: e60d694f6f712160603fb7fc127e3b3caefd4d16
     docker:
-      base: "jenkins/jenkins:2.164.2"
+      base: "jenkins/jenkins:2.164.3"
       tag: "jenkins-experimental/cwp-jenkinsfile-runner-demo"
       build: false
 war:
   groupId: "org.jenkins-ci.main"
   artifactId: "jenkins-war"
   source:
-    version: "2.164.2"
+    version: "2.164.3"
 casc:
   - id: "casc"
     source:
