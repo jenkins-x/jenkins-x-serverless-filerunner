@@ -55,10 +55,10 @@ RUN curl -f https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}
   mv linux-amd64/helm /usr/bin/ && \
   rm -rf linux-amd64
 
-RUN curl -Lf https://github.com/jstrachan/helm/releases/download/untagged-93375777c6644a452a64/helm-linux-amd64.tar.gz -o helm3.tgz && \
-  tar xf helm3.tgz && \
-  mv helm /usr/bin/helm3 && \
-  rm helm3.tgz
+# helm3
+RUN curl -L https://get.helm.sh/helm-v3.0.0-alpha.1-linux-amd64.tar.gz | tar xzv && \
+  mv linux-amd64/helm /usr/bin/helm3 && \
+  rm -rf linux-amd64
 
 # gcloud
 ENV GCLOUD_VERSION 239.0.0
