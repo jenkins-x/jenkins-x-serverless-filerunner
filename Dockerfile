@@ -82,7 +82,7 @@ RUN curl -Lf https://github.com/fabric8io/exposecontroller/releases/download/v$E
   mv exposecontroller /usr/bin/
 
 # skaffold
-ENV SKAFFOLD_VERSION 0.29.0
+ENV SKAFFOLD_VERSION 0.30.0
 RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v${SKAFFOLD_VERSION}/skaffold-linux-amd64 && \
   chmod +x skaffold && \
   mv skaffold /usr/bin
