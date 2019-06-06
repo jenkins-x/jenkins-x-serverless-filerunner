@@ -70,7 +70,7 @@ ENV PATH=$PATH:/usr/bin/google-cloud-sdk/bin
 RUN gcloud components install docker-credential-gcr
 
 # jx-release-version
-ENV JX_RELEASE_VERSION 1.0.10
+ENV JX_RELEASE_VERSION 1.0.17
 RUN curl -o ./jx-release-version -Lf https://github.com/jenkins-x/jx-release-version/releases/download/v${JX_RELEASE_VERSION}/jx-release-version-linux && \
   mv jx-release-version /usr/bin/ && \
   chmod +x /usr/bin/jx-release-version
