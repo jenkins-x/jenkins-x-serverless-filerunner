@@ -61,7 +61,7 @@ RUN curl -L https://get.helm.sh/helm-v3.0.0-alpha.1-linux-amd64.tar.gz | tar xzv
   rm -rf linux-amd64
 
 # gcloud
-ENV GCLOUD_VERSION 239.0.0
+ENV GCLOUD_VERSION 249.0.0
 RUN curl -Lf https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz | tar xzv && \
   mv google-cloud-sdk /usr/bin/
 ENV PATH=$PATH:/usr/bin/google-cloud-sdk/bin
