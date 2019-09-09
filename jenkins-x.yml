@@ -76,13 +76,7 @@ pipelineConfig:
               - --cache-dir=/workspace
 
           - image: jenkinsxio/builder-base:0.1.274
-            command: updatebot
-            args:
-              - push-version
-              - --kind
-              - docker
-              - jenkinsxio/jenkins-filerunner	
-              - ${inputs.params.version}
+            command: ./update-bot.sh
 
     pullRequest:
       pipeline:
