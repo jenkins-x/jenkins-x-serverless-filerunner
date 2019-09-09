@@ -69,7 +69,7 @@ pipelineConfig:
             command: /kaniko/executor
             args:
               - --dockerfile=Dockerfile
-              - --destination=docker.io/jenkinsxio/jenkins-filerunner:${inputs.params.version}
+              - --destination=gcr.io/jenkinsxio/jenkins-filerunner:${inputs.params.version}
               - --context=/workspace/source
               - --cache-repo=gcr.io/jenkinsxio/cache-filerunner
               - --cache=true
@@ -139,7 +139,7 @@ pipelineConfig:
             command: /kaniko/executor
             args:
               - --dockerfile=Dockerfile
-              - --destination=docker.io/jenkinsxio/jenkins-filerunner:${inputs.params.version}
+              - --destination=gcr.io/jenkinsxio/jenkins-filerunner:${inputs.params.version}
               - --context=/workspace/source
               - --cache-repo=gcr.io/jenkinsxio/cache-filerunner
               - --cache=true
