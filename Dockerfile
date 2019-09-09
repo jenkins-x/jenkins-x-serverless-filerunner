@@ -92,13 +92,6 @@ RUN curl -LO https://storage.googleapis.com/container-structure-test/latest/cont
   chmod +x container-structure-test-linux-amd64 && \
   mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
 
-# updatebot
-ENV UPDATEBOT_VERSION 1.1.41
-RUN curl -o ./updatebot -Lf https://oss.sonatype.org/content/groups/public/io/jenkins/updatebot/updatebot/${UPDATEBOT_VERSION}/updatebot-${UPDATEBOT_VERSION}.jar && \
-  chmod +x updatebot && \
-  cp updatebot /usr/bin/ && \
-  rm -rf updatebot
-
 # draft
 RUN curl -f https://azuredraft.blob.core.windows.net/draft/draft-canary-linux-amd64.tar.gz  | tar xzv && \
   mv linux-amd64/draft /usr/bin/ && \
